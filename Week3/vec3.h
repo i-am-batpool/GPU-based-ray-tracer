@@ -55,11 +55,13 @@ class Vec3{
         }
         Vec3 reflect(const Vec3& normal) const{
             Vec3 uv = (*this).unit();
-            Vec3 norm = normal.unit();
-            return (uv - norm*(uv.dot(norm))*2);
+            Vec3 norm=normal;
+            //Vec3 norm = normal.unit(); will always use normal as unit vector only. Pass also that way. In case it turns out thats not the case later uncomment this. This is an expensive operation.
+            return (uv - normal*(uv.dot(normal))*2);
         }
         Vec3 refract(const Vec3& normal, float refractive_index) const{
-            Vec3 norm = normal.unit();
+            Vec3 norm = normal;
+            //Vec3 norm = normal.unit(); will always use normal as unit vector only. Pass also that way. In case it turns out thats not the case later uncomment this. This is an expensive operation.
             Vec3 uv = (*this).unit();
 
             float cos_theta = fmin(-uv.dot(norm), 1.0f);
