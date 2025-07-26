@@ -8,7 +8,7 @@ class camera {
         //image characteristics that should be set ideally by the calling code. But default values have still been set.
         real aspect_ratio=1.0;
         int image_width=100;
-        int samples_per_pixel=10;
+        int samples_per_pixel=100;
         int max_depth=10;
 
         //render function is the only function the caller needs to call after setting the characteristics and configuring the world and the tracing and 

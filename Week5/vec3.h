@@ -107,7 +107,7 @@ class Vec3{
 
         bool near_zero() const{
             real s = 1e-8;
-            return ((abs(e[0])<s) && (abs(e[1])<s) && (abs(e[2])<s));
+            return ((std::fabs(e[0])<s) && (std::fabs(e[1])<s) && (std::fabs(e[2])<s));
         }
 };
 

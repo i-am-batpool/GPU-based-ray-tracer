@@ -24,7 +24,7 @@ class lambertian : public material {
 
             if (scatter_direction.near_zero()) scatter_direction=rec.normal;
 
-            scattered=ray(rec.point, scatter_direction);
+            scattered=ray(rec.point + rec.normal*1e-4, scatter_direction);
             return true;
         }
 };
@@ -38,7 +38,7 @@ class metal : public material {
         bool scatter(const ray& in, const hit_record& rec, color& attenuation, ray& scattered) const override{
             auto scatter_direction = in.direction().reflect(rec.normal);
             attenuation = albedo;
-            scattered = ray(rec.point, scatter_direction);
+            scattered = ray(rec.point + rec.normal*1e-4, scatter_direction);
             return true;
         }
 };
